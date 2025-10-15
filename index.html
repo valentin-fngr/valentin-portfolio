@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio Template</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for a dark, elegant theme */
+        html {
+            scroll-behavior: smooth; /* enables smooth scroll for anchor links */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* PURE BLACK background */
+            color: #E2E8F0; /* Light text for contrast */
+        }
+        .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+        .fade-in.visible > * {
+            transition-delay: 0.1s;
+        }
+        .fade-in.visible > *:nth-child(2) { transition-delay: 0.2s; }
+        .fade-in.visible > *:nth-child(3) { transition-delay: 0.3s; }
+
+
+        .section-header {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+        }
+        
+        /* Underline effect - changed to align with the modern style */
+        .section-header::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50%; /* Shorter line */
+            height: 3px;
+            background-color: #3B82F6; /* Blue accent color */
+            border-radius: 9999px;
+        }
+        .skill-list li {
+            position: relative;
+            padding-left: 1.25rem; /* Space for icon/bullet */
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* Monospace font for code/tech */
+            color: #94A3B8; /* Slate text */
+        }
+        .skill-list li::before {
+            content: '>'; /* Custom bullet point */
+            position: absolute;
+            left: 0;
+            color: #3B82F6; /* Blue accent */
+            font-weight: bold;
+        }
+
+        /* Styles for the vertical tabbed interface */
+        .tab-btn {
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            text-align: left;
+            border-left: 2px solid #1F2937; /* Default border color (gray-800) */
+            transition: all 0.2s ease-in-out;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            color: #94A3B8; /* Default text color */
+        }
+        .tab-btn:hover {
+            background-color: #111827; /* Darker gray on hover */
+            color: #E2E8F0;
+        }
+        .active-tab-btn {
+            border-left-color: #3B82F6; /* Blue accent color for active tab */
+            background-color: #0A0A0A; /* Slightly darker than hover to show activity */
+            color: #3B82F6; /* Blue text for active tab */
+        }
+
+        #project-modal::-webkit-scrollbar,
+        #project-modal *::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #project-modal::-webkit-scrollbar-thumb,
+        #project-modal *::-webkit-scrollbar-thumb {
+            background-color: #3B82F6; /* blue-500 */
+            border-radius: 9999px;
+        }
+
+        #project-modal::-webkit-scrollbar-thumb:hover,
+        #project-modal *::-webkit-scrollbar-thumb:hover {
+            background-color: #60A5FA; /* blue-400 */
+        }
+
+        #project-modal::-webkit-scrollbar-track,
+        #project-modal *::-webkit-scrollbar-track {
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-gray-800">
+        <nav class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between h-16">
+          <a href="#" class="text-2xl font-extrabold text-white tracking-widest hover:text-blue-400 transition duration-300">Valentin Fontanger</a>
+          <div class="hidden md:flex space-x-6 text-sm">
+            <a href="#about" class="text-slate-300 hover:text-blue-400 transition duration-300 font-mono">
+              <span class="text-blue-500">01.</span> About
+            </a>
+            <a href="#experience" class="text-slate-300 hover:text-blue-400 transition duration-300 font-mono">
+              <span class="text-blue-500">02.</span> Experience
+            </a>
+            <a href="#projects" class="text-slate-300 hover:text-blue-400 transition duration-300 font-mono">
+              <span class="text-blue-500">03.</span> Projects
+            </a>
+            <a href="#references" class="text-slate-300 hover:text-blue-400 transition duration-300 font-mono">
+              <span class="text-blue-500">04.</span> References
+            </a>
+            <a href="#contact" class="text-slate-300 hover:text-blue-400 transition duration-300 font-mono">
+              <span class="text-blue-500">05.</span> Contact
+            </a>
+            <a href="#" class="px-3 py-1 border border-blue-500 text-blue-400 rounded-md hover:bg-blue-500/10 transition duration-300">Resume</a>
+          </div>
+        </nav>
+      </header>
+    
+
+    <main class="max-w-7xl mx-auto">
+        <section id="hero" class="min-h-screen flex items-center justify-center text-left px-6 py-20 md:py-0">
+            <div class="max-w-4xl space-y-6">
+                <p class="text-xl text-blue-400 font-mono">Hi :]</p>
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-white">
+                    Valentin <br> Fontanger
+                </h1>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold text-gray-400">
+                    Automated vision pipelines, training, inference, edge devices.
+                </h2>
+                <p class="text-lg text-gray-300 max-w-2xl font-mono">
+                    I’m a deep learning engineer specializing in <b>computer vision</b> and <b>automated annotation systems</b>. Currently, I focus on training and deploying <b>efficient multicamera-reid models</b> for <b>resource-constrained hardware</b>.
+                </p>
+                <p class="text-sm font-mono text-slate-400 pt-2 italic">
+                    ↳ if you want project details, click links to see 
+                    <span class="text-blue-400">[papers]</span>, 
+                    <span class="text-yellow-400">[reports]</span>, or 
+                    <span class="text-green-400">[blog posts]</span>!
+                </p>
+                <p class="text-sm font-mono text-red-400 pt-2 italic">
+                    ↳ For detailed metrics please download the resume 
+                </p>
+                  
+                  
+                <div class="pt-8">
+                    <a href="#projects" class="inline-block px-6 py-3 text-lg font-mono rounded-md border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 transition duration-300 shadow-lg">
+                        My work <-
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 px-6 sm:px-8 lg:px-12 max-w-4xl mx-auto">
+            <div class="section-header text-white mb-10">
+                <span class="text-blue-500 font-mono text-xl mr-2">01.</span> About Me
+            </div>
+            <div class="grid md:grid-cols-5 gap-12">
+                <div class="space-y-6 text-gray-300 text-lg md:col-span-3 font-mono">
+                    <p>
+                        I'm 25 years old. I graduated with a <span class="text-blue-400 font-semibold">Bachelor’s in <b>Applied Mathematics</b></span> at <b>Université Paris-Sorbonne</b>, where I learned <b>Deep Learning</b> in parallel with my degree. Then, I graduated with a <span class="text-yellow-400 font-semibold"><b>Master’s in Artificial Intelligence </span> at the Sorbonne University (Paris)</b>
+                    </p>
+                    <p>
+                        I fell in love with <b>implementing models from scratch</b>, building complete <b>pre-processing, training, and validation pipelines</b>. This hands-on approach taught me how to <b>debug neural networks</b> and clearly identify the next steps in experiments.
+                    </p>
+                    <p>
+                        I’m driven by <b>real-world impact</b> more than academic benchmarks — applying research to tangible systems that perform under constraints.
+                    </p>
+                </div>
+                <div class="flex justify-center md:col-span-2">
+                    <div class="w-full max-w-xs h-64 bg-gray-900 rounded-lg p-2 border border-blue-500 shadow-2xl shadow-blue-900/50 relative overflow-hidden">
+                        <div id="carousel" class="relative w-full h-full rounded-md">
+                            <img src="./asset/valentin1.jpg" 
+                                 alt="Profile Image 1" 
+                                 class="carousel-img absolute inset-0 w-full h-full object-cover rounded-md opacity-100 transition-opacity duration-900">
+                            <img src="./asset/valentin4.webp" 
+                                 alt="Profile Image 2" 
+                                 class="carousel-img absolute inset-0 w-full h-full object-cover rounded-md opacity-100 transition-opacity duration-900">
+                            <img src="./asset/sorbonne.svg" 
+                                 alt="Sorbonne logo" 
+                                 class="carousel-img bg-white w-full h-full object-contain opacity-0 transition-opacity duration-200 rounded-md">
+                            <img src="./asset/utokyo.jpg" 
+                                alt="UTokyo logo" 
+                                class="carousel-img absolute inset-0 w-full h-full object-cover rounded-md opacity-100 transition-opacity duration-200">
+                        </div>
+                        <div class="absolute inset-0 bg-blue-500 opacity-0 hover:opacity-40 transition duration-500 rounded-md"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="py-20 px-6 sm:px-8 lg:px-12 max-w-4xl mx-auto">
+            <div class="section-header text-white mb-10">
+                <span class="text-blue-500 font-mono text-xl mr-2">02.</span> After Graduating
+            </div>
+
+            <div class="md:flex">
+                <div class="md:w-1/4 flex md:flex-col overflow-x-auto md:overflow-y-auto whitespace-nowrap md:whitespace-normal border-b md:border-b-0 md:border-r border-gray-900 bg-black md:bg-transparent">
+                    <button id="tab-btn-1" onclick="openTab(1)" class="tab-btn">Space Vision <span class="text-2xl align-middle">🇰🇷</span></button>
+                    <button id="tab-btn-2" onclick="openTab(2)" class="tab-btn">Memento.AI <span class="text-2xl align-middle">🇰🇷</span></button>
+                    <button id="tab-btn-3" onclick="openTab(3)" class="tab-btn">CypherMotion <span class="text-2xl align-middle">🇫🇷</span></button>
+                    <button id="tab-btn-4" onclick="openTab(4)" class="tab-btn">E.ON <span class="text-2xl align-middle">🇨🇿🇩🇪</span></button>
+                </div>
+
+                <div class="md:w-3/4 p-6 md:pl-8 pt-8 md:pt-0">
+                    <div id="tab-content-1" class="tab-content">
+                        <h3 class="text-2xl font-semibold text-white mb-2">
+                            AI lead <span class="text-blue-400">@ Space Vision</span> - Seoul
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">
+                            Feb 2025 — Present
+                            <a href="https://www.space-vision.ai/" 
+                                target="_blank" 
+                                class="text-blue-400 hover:text-blue-300 font-mono transition duration-300 ml-3 underline underline-offset-4">
+                                    [Website]
+                            </a>
+                        </p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>
+                                <span class="text-blue-400 font-semibold">Deep expertise:</span> Experimented extensively with <b>tracking algorithms</b> — from <b>Kalman filters</b> to <b>embedding-based ReID models</b>. Trained <b>custom multi-camera ReID networks</b> on proprietary datasets and developed strong <span class="text-yellow-400 font-semibold">diagnostic intuition</span> for performance and failure cases.
+                            </li>
+                            <li>Led the development of a real-time <b>Multicamera ReID system</b> for object tracking, deployed on resource-constrained <b>HAILO (NPU)</b>.</li>
+                            <li><span class="text-pink-400 font-semibold">Developed a custom <b>CVAT fork</b> with automated data annotation </span> for <b>demographics</b> and <b>action recognition</b>, <span class="text-yellow-400 font-semibold"> deployed through a serverless, Docker-based GPU infrastructure</span> to enable scalable, model-assisted labeling.</li>
+                            <li>
+                                <span class="text-green-400 font-semibold">Proud achievement:</span> Built an <b>automated multi-camera ReID annotation pipeline</b> combining <b>VLM-based image matching</b> and <b>spatial-temporal heuristics</b>, enabling scalable identity labeling across camera networks.
+                                <span class="text-yellow-400 font-semibold">This eliminates costly and painful manual labeling</span>.
+                            </li>
+                            <li>
+                                <span class="text-purple-400 font-semibold">Deployment & outreach:</span> Deployed our full solution and <b>established client relationships</b> across <b>Las Vegas</b>, <b>Chicago</b>, and <b>Europe</b>, ensuring on-site integration and validation.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-content-2" class="tab-content hidden">
+                        <h3 class="text-2xl font-semibold text-white mb-2">
+                            Quant Researcher / AI <span class="text-blue-400">@ Memento.AI</span> - Seoul
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">
+                            Aug 2024 — Jan 2025
+                            <a href="https://drive.google.com/drive/folders/1j_BWgvweAq4UfBnQIOSVOPnk-P6z2wul?usp=sharing" 
+                            target="_blank" 
+                            class="text-blue-400 hover:text-blue-300 font-mono transition duration-300 ml-3 underline underline-offset-4">
+                                [See research reports]
+                            </a>
+                        </p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>
+                                Explored research on <span class="text-blue-400 font-semibold">Transformers</span> and 
+                                <span class="text-blue-400 font-semibold">RNNs with attention</span> for trading, developing multiple 
+                                <span class="text-green-400 font-semibold">custom architectures</span> and 
+                                <span class="text-green-400 font-semibold">training loops</span> for 
+                                <b>mid-frequency crypto time series prediction</b>.
+                            </li>
+                            
+                            <li>
+                                Gained strong expertise in <span class="text-yellow-400 font-semibold">backtesting frameworks</span> and 
+                                <span class="text-yellow-400 font-semibold">statistical evaluation</span> of model performance for 
+                                <b>real-world trading scenarios</b>.
+                            </li>                            
+                        </ul>
+                    </div>
+
+                    <div id="tab-content-3" class="tab-content hidden">
+                        <h3 class="text-2xl font-semibold text-white mb-2 flex items-center gap-2">
+                            Founder <span class="text-blue-400">@ Cypher Motion</span> - Paris
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">
+                            Mar 2024 — Aug 2024
+                            <a href="https://oasis-tourmaline-8da.notion.site/CypherMotion-project-Machine-Learning-pipeline-1824eccd830380f68a20d3489474bd05" 
+                                target="_blank" 
+                                class="text-blue-400 hover:text-blue-300 font-mono transition duration-300 ml-3 underline underline-offset-4">
+                                    [Read how we built it]
+                            </a>
+                        </p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>
+                                <b>Founded CypherMotion</b>, an AI startup delivering <b>personalized feedback for tennis players</b> using <b>cell phone motion and video data</b>. 
+                                Led a <b>multinational team of four</b> across 
+                                France <span class="text-lg align-middle">🇫🇷</span>, 
+                                Germany <span class="text-lg align-middle">🇩🇪</span>, 
+                                the US <span class="text-lg align-middle">🇺🇸</span>, 
+                                and Japan <span class="text-lg align-middle">🇯🇵</span>.
+                            </li>
+                            <li>Built <b>supervised datasets</b> for <b>object tracking</b>, <b>pose estimation</b>, and <b>motion classification</b> from real match footage and practice sessions.</li>
+                            <li>Developed a <span class="text-green-400 font-semibold"><b>multi-head Transformer architecture</b> for <b>motion embedding</b> and <b>action recognition</b> optimized for CPU inference</span> to minimize deployment costs.</li>
+                            <li>Presented the product to <b>tennis academies</b>, demonstrating both the <span class="text-yellow-400 font-semibold">business model</span> and the <span class="text-blue-400 font-semibold">technical pipeline</span> through live demos.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-content-4" class="tab-content hidden">
+                        <h3 class="text-2xl font-semibold text-white mb-2">
+                            ML Engineer <span class="text-blue-400">@ E.ON</span> - Prague
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">
+                            Jan 2023 — Mar 2024
+                        </p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>
+                                Implemented advanced <b>forecasting models</b> for <b>energy demand</b> and <b>price prediction</b> using 
+                                <span class="text-blue-400 font-semibold">traditional statistical methods</span> and 
+                                <span class="text-green-400 font-semibold">neural architectures</span>, including <b>Transformers</b>.
+                            </li>
+                            <li>
+                                Enhanced the <b>ML pipeline library</b> for <b>automated data processing</b> and 
+                                <b>model re-fitting</b>, enabling faster experimentation for the quant team.
+                            </li>
+                            <li>
+                                <span class="text-yellow-400 font-semibold">Industry insight:</span> Gained exposure to the <b>oil and gas trading sector</b>, understanding its <b>market dynamics</b> and <b>forecasting challenges</b>.
+                            </li>
+                    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="academics" class="py-20 px-6 sm:px-8 lg:px-12 max-w-4xl mx-auto">
+            <div class="section-header text-white mb-10 flex items-center gap-3">
+                <span class="text-blue-500 font-mono text-xl">03.</span>
+                <span class="font-mono text-gray-300">
+                    Academic Years 
+                    <span class="text-xs text-gray-600 hover:text-blue-400 transition duration-300 cursor-pointer select-none ml-1">
+                        (click if you care)
+                    </span>
+                </span>
+            </div>
+
+            <div class="md:flex">
+                <div class="md:w-1/4 flex md:flex-col overflow-x-auto md:overflow-y-auto whitespace-nowrap md:whitespace-normal border-b md:border-b-0 md:border-r border-gray-900 bg-black md:bg-transparent">
+                    <button id="tab-btn-a1" onclick="openAcademicTab(1)" class="tab-btn">Sorbonne Université <span class="text-2xl align-middle">🇫🇷</span></button>
+                    <button id="tab-btn-a2" onclick="openAcademicTab(2)" class="tab-btn">University of Tokyo <span class="text-2xl align-middle">🇯🇵</span></button>
+                    <button id="tab-btn-a3" onclick="openAcademicTab(3)" class="tab-btn">Rakuten <span class="text-2xl align-middle">🇯🇵</span></button>
+                    <button id="tab-btn-a4" onclick="openAcademicTab(4)" class="tab-btn">InterDigital 🇺🇸</button>
+                </div>
+
+                <div class="md:w-3/4 p-6 md:pl-8 pt-8 md:pt-0">
+                    
+                    <div id="tab-content-a1" class="tab-content">
+                        <h3 class="text-2xl font-semibold text-white mb-2">
+                            MSc Artificial Intelligence <span class="text-blue-400">@ Sorbonne Université</span> - Paris
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">2018 — 2023</p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>Earned a <b>Master’s in Artificial Intelligence</b> and a <b>Bachelor’s in Applied Mathematics</b> with honors.</li>
+                            <li>Focused on <span class="text-green-400 font-semibold">Deep Learning, Computer Vision, and Optimization</span>.</li>
+                            <li>Developed end-to-end <b>training and validation pipelines</b> for neural architectures from scratch.</li>
+                            <li>Many courses on <b>Statistics</b>, <b>Optimization</b>, <b>Calculus</b> and <b>Linear Algebra</b>.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-content-a2" class="tab-content hidden">
+                        <h3 class="text-2xl font-semibold text-white mb-2">
+                            Exchange & Research Intern <span class="text-blue-400">@ University of Tokyo</span> - Tokyo
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">Sep 2022 — Mar 2023</p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>Conducted research in <b>machine learning and computer vision</b> under academic supervision.</li>
+                            <li>Collaborated with international researchers, strengthening <span class="text-yellow-400 font-semibold">cross-cultural engineering communication</span>.</li>
+                            <li>Studied <b>statistical modeling, neural architectures, and data analysis</b> as part of the exchange.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-content-a3" class="tab-content hidden">
+                        <h3 class="text-2xl font-semibold text-white mb-2">
+                            UTokyo partnership <span class="text-blue-400">@ Rakuten</span> - Tokyo
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">
+                            Oct 2022 — Feb 2023
+                            <a href="/Users/valentin/Desktop/valentin_website/asset/DSS_rakuten_edit.pdf" 
+                                target="_blank" 
+                                class="text-blue-400 hover:text-blue-300 font-mono transition duration-300 ml-3 underline underline-offset-4">
+                                    [Read the paper]
+                            </a>
+                        </p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>Analyzed the <b>impact of cashless payment systems</b> across Japanese cities using <b>Python and SQL</b>.</li>
+                            <li>Led a <b>multinational team of 13 students</b> (Chinese, Japanese, English speakers) on applied data projects.</li>
+                            <li>Worked under the supervision of <b>Rakuten’s data science team</b>, learning how to design and execute a complete <b>data science project</b> from data collection to presentation.</li>
+                        </ul>
+                    </div>
+
+                    <div id="tab-content-a4" class="tab-content hidden">
+                        <h3 class="text-2xl font-semibold text-white mb-2">
+                            Research Intern <span class="text-blue-400">@ InterDigital</span> - Silicon Valley
+                        </h3>
+                        <p class="text-sm font-mono text-gray-500 mb-6">
+                            Apr 2023 — Sep 2023
+                            <a href="https://github.com/InterDigitalInc/CompressAI" 
+                                target="_blank" 
+                                class="text-blue-400 hover:text-blue-300 font-mono transition duration-300 ml-3 underline underline-offset-4">
+                                    [I worked with this library]
+                            </a>
+                        </p>
+                        <ul class="list-disc ml-5 space-y-3 text-gray-300 font-mono text-sm">
+                            <li>Worked on <b>neural video compression</b> using <b>deep learning–based codecs</b> within the <b>CompressAI framework</b>.</li>
+                            <li>Spent six months immersed in the center of Silicon Valley’s AI boom, surrounded by leading research labs and emerging startups driving the next wave of innovation.</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+
+        <section id="projects" class="py-20 px-6 sm:px-8 lg:px-12 max-w-5xl mx-auto">
+            <div class="section-header text-white mb-10">
+              <span class="text-blue-500 font-mono text-xl mr-2">03.</span> Some relevant Projects 
+            </div>
+            <div id="projects-grid" class="space-y-24"></div>
+          </section>
+          
+
+
+        <section id="references" class="py-20 px-6 sm:px-8 lg:px-12 max-w-4xl mx-auto">
+            <div class="section-header text-white mb-10">
+                <span class="text-blue-500 font-mono text-xl mr-2">04.</span> Key Collaborators & References
+            </div>
+
+            <p class="text-lg text-gray-400 max-w-2xl font-mono mb-12">
+                My journey has been shaped by mentors and collaborators who trusted my technical skills and work ethic. 
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8" id="references-grid">
+                
+                <div id="ref-card-1" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="1">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-2" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="2">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-3" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="3">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+                
+                <div id="ref-card-4" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="4">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+                
+                <div id="ref-card-5" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="5">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-6" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="6">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-7" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="7">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-8" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="8">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-9" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="9">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-10" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="10">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-11" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="11">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+
+                <div id="ref-card-12" class="ref-card bg-gray-900 p-6 rounded-lg border border-gray-800 hover:border-blue-500 transition duration-300 cursor-pointer shadow-xl" data-ref-id="12">
+                    <p class="ref-role text-blue-400 font-mono text-sm mb-1"></p>
+                    <h4 class="ref-name text-xl font-bold text-white"></h4>
+                    <p class="ref-title text-gray-500 text-sm"></p>
+                </div>
+                
+            </div>
+
+            <div id="reference-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden justify-center items-center p-4">
+                <div class="bg-gray-900 p-8 rounded-lg max-w-lg w-full border border-blue-500 shadow-2xl relative">
+                    
+                    <h3 id="modal-name" class="text-3xl font-extrabold text-blue-400 mb-2"></h3> 
+                    <p id="modal-title" class="text-lg font-mono text-gray-400 mb-4"></p>
+                    <hr class="border-gray-800 mb-6">
+                    
+                    <div class="space-y-4 text-gray-300 font-mono text-sm">
+                        <div class="space-y-1">
+                            <p class="text-white font-bold">My Interaction:</p>
+                            <p id="modal-interaction" class="pl-2"></p> 
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <p class="text-white font-bold">Email:</p>
+                            <a id="modal-email" href="#" class="text-green-400 hover:text-green-300 underline pl-2 break-all"></a>
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <p class="text-white font-bold">LinkedIn:</p>
+                            <a id="modal-linkedin" href="#" target="_blank" class="text-blue-400 hover:text-blue-300 underline pl-2 break-all">View Profile</a>
+                        </div>
+                    </div>
+
+                    <button onclick="closeReferenceModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="contact" class="py-20 px-6 sm:px-8 lg:px-12 text-center max-w-xl mx-auto">
+            <div class="section-header text-white mb-10 mx-auto">
+                <span class="text-blue-500 font-mono text-xl mr-2">05.</span> Get In Touch
+            </div>
+            <div class="grid gap-4">
+                <a href="https://www.linkedin.com/in/valentin-fontanger/"
+                   target="_blank" rel="noopener"
+                   class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-500/60 rounded-md text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 transition font-mono">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.06c.53-1 1.82-2.06 3.75-2.06 4.01 0 4.75 2.64 4.75 6.07V23h-4v-5.93c0-1.41-.03-3.22-1.96-3.22-1.97 0-2.27 1.54-2.27 3.12V23h-4V8.5z"/>
+                  </svg>
+                    valentin-fontanger
+                </a>
+            
+                <a href="mailto:valentin.fontanger@gmail.com"
+                   class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-blue-500/60 rounded-md text-blue-300 hover:text-blue-200 hover:bg-blue-500/10 transition font-mono">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5A2 2 0 003 7v10a2 2 0 002 2z"/>
+                  </svg>
+                  valentin.fontanger@gmail.com
+                </a>
+            
+                <a href="https://wa.me/33663734342" target="_blank" rel="noopener"
+                   class="inline-flex items-center justify-center gap-2 px-6 py-3 border border-green-500/60 rounded-md text-green-300 hover:text-green-200 hover:bg-green-500/10 transition font-mono">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M20.52 3.48A11.9 11.9 0 0012.06 0C5.58 0 .33 5.25.33 11.72c0 2.06.55 4.06 1.6 5.83L0 24l6.6-1.9a11.7 11.7 0 005.46 1.4h.01c6.48 0 11.73-5.26 11.73-11.73 0-3.13-1.22-6.06-3.28-8.29zM12.07 21.2a9.46 9.46 0 01-4.82-1.32l-.35-.2-3.92 1.12 1.12-3.82-.23-.39a9.46 9.46 0 01-1.45-5.06c0-5.22 4.25-9.47 9.47-9.47 2.53 0 4.92.98 6.72 2.78a9.46 9.46 0 012.76 6.7c0 5.22-4.25 9.46-9.47 9.46zm5.35-7.12c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.74.94-.91 1.13-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.14-.14.29-.38.43-.57.14-.19.19-.33.29-.53.1-.19.05-.38-.02-.53-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.49-.17-.01-.36-.01-.55-.01-.19 0-.53.08-.81.38-.28.3-1.08 1.05-1.08 2.56 0 1.5 1.11 2.95 1.26 3.15.15.19 2.2 3.36 5.34 4.72.75.32 1.33.5 1.78.64.75.24 1.43.2 1.97.12.6-.09 1.85-.76 2.11-1.49.26-.73.26-1.35.18-1.49-.07-.14-.27-.22-.56-.37z"/>
+                  </svg>
+                  WhatsApp: +33&nbsp;6&nbsp;63&nbsp;73&nbsp;43&nbsp;42
+                </a>
+            
+        </section>
+
+    </main>
+
+    <footer class="mt-20 py-8 border-t border-gray-900 text-center text-gray-400 text-xs font-mono">
+        <p>Designed and Built by Valentin Fontanger.</p>
+        <p>&copy; 2025. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // ======================================================================
+        // 1. DATA DEFINITIONS
+        // ======================================================================
+        const referencesData = [
+            {
+                id: 1,
+                name: "Jorit Schmelzle",
+                role: "Peregrine.AI",
+                title: "CEO, Peregrine",
+                email: "joritschmelzle@gmail.com",
+                linkedin: "https://www.linkedin.com/in/jorit-j-k-schmelzle/",
+                interaction: "Amazing CEO of Peregrine.AI. He gave me the chance to build a mobile-friendly CNN backbone, a project that launched my AI career."
+            },
+            {
+                id: 2,
+                name: "Damien Dam",
+                role: "Snowflake",
+                title: "Swe @ Snowflake",
+                email: "trungdam@yahoo.com",
+                linkedin: "https://www.linkedin.com/in/damien-dam",
+                interaction: "We built CypherMotion together. Damien was an amazing classmate and co-founder. His expertise in backend infrastructure was crucial to designing our microservice architecture."
+            },
+            {
+                id: 3,
+                name: "Sankar Ragunathan",
+                role: "Deutsche Bank",
+                title: "Memento.AI - now Deutsche Bank",
+                email: "rsankar1069@gmail.com",
+                linkedin: "https://www.linkedin.com/in/sankarraghu/",
+                interaction: "I met Sankar at Memento.AI, where we had daily discussions about our model training progress. With a PhD in Applied Mathematics, he specialized in Neural Differential Equations and brought deep theoretical insight to our work."
+            },
+            {
+                id: 4,
+                name: "Eike Grewe",
+                role: "E.ON ",
+                title: "Head of Modelling",
+                email: "e.w.grewe@uni-muenster.de",
+                linkedin: "https://www.linkedin.com/in/eike-wolfgang-grewe-81494113b",
+                interaction: "Grewe introduced me to the world of oil and gas commodities trading. I worked with him on price fitting curve models, and he also shared my favorite joke to this day: “I don’t need a CCTV system because when I leave my house, there’s nothing valuable left.”'"
+            },
+            {
+                id: 5,
+                name: "Tobias Scheck",
+                role: "Peregrine.AI ",
+                title: "Head of Machine Learning",
+                email: "hello@scheck.engineer",
+                linkedin: "https://www.linkedin.com/in/tobiasscheck",
+                interaction: "He supervised my research at Peregrine.AI, where we implemented a mobile-friendly CNN backbone ahead of the official code release. He has been a mentor and introduced me to the GitHub workflow and ML experimentation."
+            }, 
+            {
+                id: 6,
+                name: "Takubon Son",
+                role: "UTokyo ",
+                title: "AI Researcher",
+                email: "takubonson@gmail.com",
+                linkedin: "https://www.linkedin.com/in/takubon-son-19a94b274",
+                interaction: "Takubon and I worked in the same lab at the University of Tokyo, and later collaborated on CypherMotion together.'"
+            }, 
+            {
+                id: 7,
+                name: "Matthieu d'Ornano",
+                role: "Sorbonne Univ.",
+                title: "Structured Products",
+                email: "matthieu.d.ornano@gmail.com",
+                linkedin: "https://www.linkedin.com/in/matthieu-d-ornano-3254b7170",
+                interaction: "Matthieu and I were classmates who dove deep into applied mathematics together. He’s one of the reasons studying was fun."
+            }, 
+            {
+                id: 8,
+                name: "Nam Le",
+                role: "Sorbonne Univ.",
+                title: "Machine Learning",
+                email: "lehainam2371999@gmail.com",
+                linkedin: "https://www.linkedin.com/in/nam-le-hai-988a161a4",
+                interaction: "Nam and I worked on a project that became a real turning point for me, we built neural networks from scratch in NumPy, including optimizers, activations, batch norm, and 2D CNNs. We even derived backprop by hand before implementing it."
+            },
+            {
+                id: 9,
+                name: "Fabien Racape",
+                role: "InterDigital.",
+                title: "Senior Scientist",
+                email: "racape.fabien@gmail.com",
+                linkedin: "https://www.linkedin.com/in/fabienracape/",
+                interaction: "Fabien is a senior scientist at InterDigital who supervised my research on video compression. He introduced me to the field and taught me the fundamentals of video coding."
+            }, 
+            {
+                id: 10,
+                name: "Amir Moazami",
+                role: "Ring Central",
+                title: "Machine Learning Lead",
+                email: "amirebrahim.m@gmail.com",
+                linkedin: "https://www.linkedin.com/in/nam-le-hai-988a161a4",
+                interaction: "Amir and I worked together at InterDigital, where we frequently discussed topics such as large language models and generative AI. He holds a master’s degree in Data Science from UC Berkeley."
+            }, 
+            {
+                id: 11,
+                name: "Gwendelyn Wong",
+                role: "Space Vision",
+                title: "Machine Learning intern",
+                email: "gwendelynwongry@gmail.com",
+                linkedin: "https://www.linkedin.com/in/gwendelynwong/",
+                interaction: "Gwendelyn was my intern at Space Vision, where she contributed to developing an automated multi-camera ReID annotation system. She consistently added value through her rigorous experimentation methodology. She holds a master’s degree from Korea University."
+            }, 
+            {
+                id: 12,
+                name: "Caroline Vernier",
+                role: "Paris Sorbonne",
+                title: "Professor",
+                email: "caroline.vernier@univ-paris1.fr",
+                linkedin: "https://www.youtube.com/watch?v=uFZ30grLe1U",
+                interaction: "Madame Vernier has been an outstanding professor in Calculus, Integration, and Probability. She’s one of those rare teachers you remember long after the course ends."
+            }
+        ];
+        // --- Project 
+
+        const projectsData = [
+            {
+                id: 1,
+                title: "Nvidia Omniverse synthetic retail store data generation",
+                category: "Industry, Deep Learning, Synthetic Data",
+                description: "Read how I leveraged Nvidia Omniverse to generate large amount of synthetic data for retail scenes. <br> Human annotation time and cost = 0",
+                tech: "Pytorch, Nvidia Omniverse, Python",
+                thumbnail: "./asset/omniverse_thumbnail.gif",
+                modalContent: [
+                { type: "text", value: "NVIDIA Omniverse is a powerful 3D platform that lets you create, script, and randomize virtual scenes with full access to ground-truth geometry. This makes it ideal for generating synthetic datasets for depth estimation, 3D detection, or segmentation tasks."},
+                { type: "image", value: "./asset/randomization_ex.gif" },
+                { type: "text", value: "I used it to build large-scale retail scenes for tasks like product segmentation, shelf detection, and customer-interaction analysis. A custom Python script randomizes object placement, camera angles, and lighting conditions to diversify the data." },
+                { type: "image", value: "./asset/more_randomization.gif" },
+                { type: "text", value: "Here’s an example of a training sample for a shelf-detection model:" },
+                { type: "image", value: "./asset/shelf_training_data.png" },
+                { type: "text", value: "When tested on real-world footage, a model trained entirely on synthetic data showed strong generalization performance." },
+                { type: "image", value: "./asset/shelf_test.png" },
+                { type: "text", value: "I later extended the setup for human-centric tasks such as pose estimation and action recognition." },
+                { type: "image", value: "./asset/gif_person_walking_omniverse.gif" }, 
+                { type: "text", value: "By scripting virtual agents to move and interact in realistic retail environments, I can simulate complex customer behaviors and collect data at scale." },
+                { type: "image", value: "./asset/full_store_omniverse.gif" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Real time, Multi Camera Re-Identification algorithm",
+                category: "Industry, Tracking, Deep Learning, Embedding retrieval",
+                description: "How I designed and deployed a real-time Multi-camera re-Identification system by reducing human labelling time by 90%, cost by 75%.",
+                tech: "Python, Fast-api, redis, async, Torch, HailoRT, vector search",
+                thumbnail: "./asset/multicamera_example.gif",
+                modalContent: [
+                { type: "text", value: "I developed and adapted tracking algorithms for multi-camera environments, focusing on robust performance under noisy and constrained conditions." },
+                { type: "image", value: "./asset/multicamera_example.gif" },
+                { type: "text", value: "While the core algorithm builds on a customized HybridSORT implementation, the true innovation lies in the fully automated data collection pipeline : no human labeling required.👀" }
+                ]
+            }, 
+            {
+                id: 3,
+                title: "Pytorch from scratch !",
+                category: "Academic, Deep learning, mathematics",
+                description: "I built core PyTorch-like functionalities in NumPy, deriving backpropagation by hand before implementing it, including 2D CNNs, optimizers, activation functions, and normalization layers.",
+                tech: "Python, Mathetmatics, Deep Learning, testing",
+                thumbnail: "./asset/pytorchDIY_test.png",
+                modalContent: [
+                    { 
+                    type: "text", 
+                    value: `
+                        <p>
+                        See the full project report 
+                        <a href="./asset/rapport_nam_valentin.pdf" target="_blank" rel="noopener noreferrer">
+                            <span class='text-blue-400 font-semibold'>here</span>
+                        </a>.
+                        <br>
+                        Git Lab repo 
+                        <a href="https://gitlab.com/Nam2371999/pytorchdiy" target="_blank" rel="noopener noreferrer">
+                            <span class='text-blue-400 font-semibold'>here</span>
+                        </a>
+                        </p>
+                    ` 
+                    },
+                    { type: "text", value: "Alongside my classmate Nam, I built <b>pytorchDIY</b>, a from-scratch reimplementation of core PyTorch functionalities, intended as a learning engine and research env." },
+                    { type: "text", value: "We designed it to mirror essential features: automatic differentiation, tensor operations, autograd engine, and module layering. By doing this, we gained deep insight into the internal mechanics of deep learning frameworks." },
+                    { type: "text", value: "<span class='text-green-400 font-semibold'>The most impactful part of the learning : deriving the backprop on the board and then implementing it in the library. <span>" },
+                    { type: "text", value: "Here’s the workflow we followed:" },
+                    { type: "text", value: `
+                        <ol>
+                            <li><strong>Tensor engine</strong> : Implemented a custom <code>Tensor</code> with broadcasting and core arithmetic ops.</li>
+                            <li><strong>Graph &amp; Autograd</strong> : Built a dynamic computation graph and reverse-mode backprop for gradients.</li>
+                            <li><strong>Modules &amp; Layers</strong> : Created a <code>Module</code> base and standard layers (Linear, activations) mirroring PyTorch’s <code>nn</code> API.</li>
+                            <li><strong>Optimizers &amp; Training Loop</strong> : Added SGD/Adam and an end-to-end training loop for model updates.</li>
+                        </ol>
+                    `},
+                    { type: "text", value: "<span class='text-yellow-400 font-semibold'>Throughout the project, I paid strong attention to testing, validating every module and gradient computation to ensure numerical stability and correctness. </span>" },
+                    { type: "text", value: "We built a simple API allowing us to experiment quickly and retrieve valuable insights such as features maps or backward signal. We tested the effect of occluded and noisy input " },
+                    { type: "image", value: "./asset/feature_map.png"},
+                    { type: "image", value: "./asset/impact_of_occlusion_and_noise.png" }
+                ]
+            },
+            {
+                id: 4,
+                title: "An intuitive course on Tracking algorithms.",
+                category: "Personal, Deep learning, Education",
+                description: "I am currently building a video course that teaches how tracking algorithms work under the hood.",
+                tech: "Python, Mathetmatics, Deep Learning, Kalman, Teaching",
+                thumbnail: "./asset/Basics.jpeg",
+                modalContent: [
+                { type: "text", value: "I am building a YouTube series that goes thought the key concepts of people tracking. I first explain the basics introducing the notion of inference, FPS, and image as input. I then proceed to propose a naive baseline for tracking combining similarity and a basic temporal consistency. Finally, I dive into the math of the Kalman Filter and its association with Reid neural nets." },
+                { type: "text", value: " <span class='text-green-400 font-semibold'>[Currently filming the episodes] </span>"},                
+                { type: "image", value: "./asset/Basics.jpeg" },
+                { type: "image", value: "./asset/Naive tracking system 3.jpeg" },
+                { type: "image", value: "./asset/Naive tracking system 2.jpeg" },
+                { type: "image", value: "./asset/I) A better motion prediction model 2.jpeg" },
+                { type: "text", value: "By surfacing only uncertain samples, we cut labeling time by 90% and reduced the amount of money spent on data annotation by 80%." }
+                ]
+            }
+        ];
+
+        function loadProjects() {
+            const container = document.getElementById("projects-grid");
+            container.innerHTML = "";
+            projectsData.forEach((p) => {
+            container.innerHTML += `
+                <div class="grid md:grid-cols-12 gap-6 group cursor-pointer" onclick="openProjectModal(${p.id})">
+                <div class="md:col-span-7 flex flex-col justify-center space-y-3 md:order-1 order-2 md:text-right">
+                    <p class="text-blue-400 text-sm font-mono">${p.category}</p>
+                    <h3 class="text-3xl font-bold text-white group-hover:text-blue-400 transition duration-300">${p.title}</h3>
+                    <div class="bg-gray-900/90 p-6 rounded-lg shadow-xl text-gray-300 relative z-10 border border-gray-800">
+                    <p class="font-mono text-sm">${p.description}</p>
+                    </div>
+                    <p class="text-xs font-mono text-gray-400 md:text-right">
+                    ${p.tech}
+                    </p>
+                </div>
+                <div class="md:col-span-5 flex justify-start md:order-2 order-1">
+                    <div class="w-full h-auto max-w-lg aspect-video bg-gray-900 rounded-lg overflow-hidden border border-gray-800 shadow-2xl shadow-blue-900/30 relative">
+                    <img src="${p.thumbnail}" class="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition duration-500">
+                    </div>
+                </div>
+                </div>`;
+            });
+        }
+
+        function openProjectModal(id) {
+            const project = projectsData.find((p) => p.id === id);
+            if (!project) return;
+            document.getElementById("project-modal-title").textContent = project.title;
+            document.getElementById("project-modal-category").textContent = project.category;
+
+            const content = document.getElementById("project-modal-content");
+            content.innerHTML = "";
+            project.modalContent.forEach((block) => {
+            if (block.type === "text") {
+                content.innerHTML += `<p class="text-gray-300 font-mono text-sm leading-relaxed">${block.value}</p>`;
+            } else if (block.type === "image") {
+                content.innerHTML += `<img src="${block.value}" class="w-full rounded-lg border border-gray-800 shadow-lg" />`;
+            }
+            });
+            document.getElementById("project-modal").classList.remove("hidden");
+            document.getElementById("project-modal").classList.add("flex");
+        }
+
+        function closeProjectModal() {
+            document.getElementById("project-modal").classList.add("hidden");
+            document.getElementById("project-modal").classList.remove("flex");
+        }
+
+
+        // --- Image Carousel data (needed for the script) ---
+        const images = document.querySelectorAll('#carousel .carousel-img');
+        let currentImage = 0;
+
+
+        // ======================================================================
+        // 2. EXPERIENCE AND ACADEMIC TABS FUNCTIONS
+        // ======================================================================
+
+        function openTab(tabId) {
+            // Deactivate all tab buttons (Experience)
+            document.querySelectorAll('[id^="tab-btn-"]').forEach(btn => {
+                if (!btn.id.startsWith('tab-btn-a')) {
+                    btn.classList.remove('active-tab-btn');
+                }
+            });
+
+            // Hide all tab content (Experience)
+            document.querySelectorAll('[id^="tab-content-"]').forEach(content => {
+                if (!content.id.startsWith('tab-content-a')) {
+                    content.classList.add('hidden');
+                }
+            });
+
+            // Activate the clicked tab button
+            document.getElementById(`tab-btn-${tabId}`).classList.add('active-tab-btn');
+
+            // Show the relevant content
+            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+        }
+
+        function openAcademicTab(tabId) {
+            // Deactivate all tab buttons (Academic)
+            document.querySelectorAll('[id^="tab-btn-a"]').forEach(btn => btn.classList.remove('active-tab-btn'));
+            // Hide all tab content (Academic)
+            document.querySelectorAll('[id^="tab-content-a"]').forEach(content => content.classList.add('hidden'));
+
+            // Activate the clicked tab button
+            document.getElementById(`tab-btn-a${tabId}`).classList.add('active-tab-btn');
+            // Show the relevant content
+            document.getElementById(`tab-content-a${tabId}`).classList.remove('hidden');
+        }
+
+        // ======================================================================
+        // 3. REFERENCE CARDS AND MODAL FUNCTIONS
+        // ======================================================================
+
+        // Loads name, role, and title into the visible cards
+        function loadReferenceCards() {
+            referencesData.forEach(data => {
+                const card = document.querySelector(`.ref-card[data-ref-id="${data.id}"]`);
+                if (card) {
+                    card.querySelector('.ref-role').textContent = data.role;
+                    card.querySelector('.ref-name').textContent = data.name;
+                    card.querySelector('.ref-title').textContent = data.title;
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadReferenceCards(); 
+            loadProjects(); // <---- ADD THIS LINE
+            document.querySelectorAll('.ref-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const refId = parseInt(this.getAttribute('data-ref-id'));
+                    openReferenceModal(refId);
+                });
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                } else {
+                    entry.target.classList.remove("visible");
+                }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll("section").forEach((section) => {
+                section.classList.add("fade-in");
+                observer.observe(section);
+            });
+        });
+
+
+
+        function openReferenceModal(refId) {
+            const data = referencesData.find(ref => ref.id === refId);
+            if (!data) return;
+
+            document.getElementById('modal-name').textContent = data.name;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-interaction').textContent = data.interaction;
+
+            const emailLink = document.getElementById('modal-email');
+            emailLink.textContent = data.email;
+            emailLink.href = `mailto:${data.email}`;
+            
+            const linkedinLink = document.getElementById('modal-linkedin');
+            linkedinLink.href = data.linkedin;
+
+            document.getElementById('reference-modal').classList.remove('hidden');
+            document.getElementById('reference-modal').classList.add('flex');
+        }
+
+        function closeReferenceModal() {
+            document.getElementById('reference-modal').classList.add('hidden');
+            document.getElementById('reference-modal').classList.remove('flex');
+        }
+
+        // ======================================================================
+        // 4. CAROUSEL FUNCTION
+        // ======================================================================
+
+        function startCarousel() {
+            return setInterval(() => {
+                images[currentImage].classList.remove('opacity-100');
+                images[currentImage].classList.add('opacity-0');
+            
+                currentImage = (currentImage + 1) % images.length;
+            
+                images[currentImage].classList.remove('opacity-0');
+                images[currentImage].classList.add('opacity-100');
+            }, 2000); // Changed back to 3000ms for a smoother transition
+        }
+
+        // ======================================================================
+        // 5. INITIALIZATION
+        // ======================================================================
+
+        // Attach event listeners when the HTML structure is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load the names and titles into the visible reference cards
+            loadReferenceCards(); 
+
+            // Attach click handlers to open the modal for each card
+            document.querySelectorAll('.ref-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const refId = parseInt(this.getAttribute('data-ref-id'));
+                    openReferenceModal(refId);
+                });
+            });
+        });
+
+
+        // Initialize on window load (runs after DOMContentLoaded)
+        window.onload = function () {
+            startCarousel(); // Start the image switching
+            openTab(1); // Set the first Experience tab (Space Vision) as active by default
+            openAcademicTab(1); // Set the first Academic tab (Sorbonne) as active by default
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate-fadein");
+                }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll("section").forEach(sec => {
+                sec.classList.add("fade-in");
+                observer.observe(sec);
+            });
+        });
+
+    </script>
+    <div id="project-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden justify-center items-center p-4">
+        <div class="bg-gray-900 p-8 rounded-lg max-w-3xl w-full border border-blue-500 shadow-2xl relative overflow-y-auto max-h-[90vh]">
+          <h3 id="project-modal-title" class="text-3xl font-extrabold text-blue-400 mb-2"></h3>
+          <p id="project-modal-category" class="text-sm font-mono text-gray-400 mb-4"></p>
+          <div id="project-modal-content" class="space-y-6"></div>
+          <button onclick="closeProjectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white transition duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+            </svg>
+          </button>
+        </div>
+    </div>        
+</body>
+</html>
